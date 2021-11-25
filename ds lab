@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct ref
+{
+    int a;
+    struct ref *p;
+};
+struct ref *x,*y,*z;
+void main()
+{
+    x=(struct ref *)malloc(sizeof(struct ref));
+    y=(struct ref *)malloc(sizeof(struct ref));
+    z=(struct ref *)malloc(sizeof(struct ref));
+    x->a=10;
+    y->a=20;
+    z->a=30;
+    x->p=y;
+    y->p=z;
+    z->p=NULL;
+    printf("value of x= %d\n",x->a);
+    printf("value of y= %d\n",y->a);
+    printf("value of z= %d\n",z->a);
+    printf("value of y=%d\n",x->p->a);
+    printf("value of z=%d\n",x->p->p->a);
+    printf("value of z=%d\n",y->p->a);
+
+
+}
