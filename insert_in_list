@@ -1,0 +1,83 @@
+#include<stdio.h>
+#include <stdlib.h>
+struct slist
+{
+    int d;
+    struct slist *next;
+};
+typedef struct slist node;
+node *create(node *first)
+{
+    node * pre,*nw=first;
+    int x;
+    printf("enter data (enter -1 to stop)\n");
+    scanf("%d",&x);
+    while(x!=-1)
+    {
+        nw=(node *)malloc(sizeof(node));
+        nw->d=x;
+        if (first==NULL)
+        {
+            first=nw;
+            pre=nw;
+        }
+        else
+        {
+            pre->next=nw;
+            pre=nw;
+        }
+        printf("enter elements(enter -1 to stop)\n");
+        scanf("%d",&x);
+    }
+    return first;
+}
+void display(node *first)
+{
+    node *temp=first;
+    if(first==NULL)
+    {
+        printf("no list to print");
+    }
+    while(temp!=NULL)
+    {
+        printf("%3d",temp->d);
+        temp=temp->next;
+    }
+    printf("   NULL");
+}
+node *insertion_at_starting(node *first,int x)
+{
+    node *new;
+    new=(node *)malloc(sizeof(node));
+    new->d=x;
+    new->next=first;
+    first=new;
+    return first;
+}
+node *insert_at_end(node *first,int x)
+{
+    node *temp;
+    new=(node *)malloc(sizeof(node));
+    new->d=x;
+    first=temp;
+    if (first==NULL)
+    {
+        first=new;
+    }
+    while(temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=new;
+    return first;
+}
+void main ()
+{
+    int x;
+    node * head=NULL;
+    head=create(head);
+    printf("enter data to add");
+    scanf("%d",&x);
+    /*head=insert_at_end(head,x);*/
+    display(head);
+}
